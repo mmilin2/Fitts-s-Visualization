@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HCI CS 522 - Fitt's law experiment</title>
+    <link rel='stylesheet' href="./css/css/skeleton.css"/>
+    <link rel="stylesheet" href="./css/css/normalize.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="FittsLaw.js"></script>
+</head>
+<body>
+<div id="Header" class="nine columns customHeader">
+    <h5 class="headercontent">FITTS' LAW EXPERIMENT</h5>
+    <h6 class="headercontent">
+        <ul id="headerList" style="list-style-type:disc">
+            <li>
+                <b>OBJECTIVE:</b><br>
+                <span>Visualisation of Fitt's law.</span>
+            </li>
+            <li>
+               Following are the experiment setup measures:<br>
+                <ol id="experimetsetuplist" style="list-style-type: decimal">
+                    <li>
+                        <b>Input modality:  </b> Mouse<br>
+                    </li>
+                    <li>
+                        <b>Number of target sizes: </b>2<br>
+                    </li>
+                    <li>
+                        <b>Number of distinct distances:  </b>3<br><br>
+                    </li>
+                </ol>
+            </li>
+
+        </ul>
+    </h6>
+</div>
+<div class="twelve columns settings">
+    <div id = 'experimentSettings' class="three columns settings" style="height: inherit">
+        <h5 class="headercontent titleSub">EXPERIMENT SETTING</h5>
+
+        <h6 style="margin-bottom: 1.5rem;margin-left: 1.5rem">DISTANCE</h6>
+        <input type="radio" name="distance" value="120" onclick="changeDist(120);" checked>120
+        <input type="radio" name="distance" value="210" onclick="changeDist(210);">210
+        <input type="radio" name="distance" value="300" onclick="changeDist(300);">300
+
+        <h6 style="margin-bottom: 1.5rem;margin-left: 1.5rem">WIDTH</h6>
+        <input type="radio" name="targetWidth" value="40" onclick="changeRadius(40);" checked>40
+        <input type="radio" name="targetWidth" value="100" onclick="changeRadius(100);">100
+
+    </div>
+
+    <div id="experimentArea" class="six columns settings" >
+        <svg id="120D" width="620" height="400" style="pointer-events: all; display: inline" >
+            <rect cx="0" cy="0" width="620" height="400" class="back"></rect>
+            <circle id="120D1" class="circlePattern" cx="370" cy="200" r="20" onclick="clickedCircle('120D1');"></circle>
+            <circle id="120D2" class="circlePattern" cx="355.9626665871387" cy="238.56725658119234" r="20" onclick="clickedCircle('120D2');"></circle>
+            <circle id="120D3" class="circlePattern" cx="320.41889066001585" cy="259.0884651807325" r="20" onclick="clickedCircle('120D3');"></circle>
+            <circle id="120D4" class="circlePattern" cx="280" cy="251.96152422706632" r="20" onclick="clickedCircle('120D4');"></circle>
+            <circle id="120D5" class="circlePattern" cx="253.6184427528455" cy="220.52120859954013" r="20" onclick="clickedCircle('120D5');"></circle>
+            <circle id="120D6" class="circlePattern" cx="253.6184427528455" cy="179.47879140045987" r="20" onclick="clickedCircle('120D6');"></circle>
+            <circle id="120D7" class="circlePattern" cx="280" cy="148.03847577293368" r="20" onclick="clickedCircle('120D7');"></circle>
+            <circle id="120D8" class="circlePattern" cx="320.4188906600158" cy="140.9115348192675" r="20" onclick="clickedCircle('120D8');"></circle>
+            <circle id="120D9" class="circlePattern" cx="355.96266658713864" cy="161.43274341880763" r="20" onclick="clickedCircle('120D9');"></circle>
+        </svg>
+
+        <svg id="210D" width="620" height="400" style="pointer-events: all; display: none">
+            <rect cx="0" cy="0" width="620" height="400" class="back"></rect>
+            <circle id="210D1" class="circlePattern" cx="415" cy="200" r="20" onclick="clickedCircle('210D1')"></circle>
+            <circle id="210D2" class="circlePattern" cx="390.4346665274927" cy="267.49269901708664" r="20" onclick="clickedCircle('210D2');"></circle>
+            <circle id="210D3" class="circlePattern" cx="328.2330586550277" cy="303.40481406628186" r="20" onclick="clickedCircle('210D3');"></circle>
+            <circle id="210D4" class="circlePattern" cx="257.5" cy="290.93266739736606" r="20" onclick="clickedCircle('210D4');"></circle>
+            <circle id="210D5" class="circlePattern" cx="211.33227481747963" cy="235.91211504919522" r="20" onclick="clickedCircle('210D5')"></circle>
+            <circle id="210D6" class="circlePattern" cx="211.33227481747963" cy="164.08788495080478" r="20" onclick="clickedCircle('210D6')"></circle>
+            <circle id="210D7" class="circlePattern" cx="257.49999999999994" cy="109.06733260263397" r="20" onclick="clickedCircle('210D7')"></circle>
+            <circle id="210D8" class="circlePattern" cx="328.23305865502766" cy="96.59518593371814" r="20" onclick="clickedCircle('210D8')"></circle>
+            <circle id="210D9" class="circlePattern" cx="390.43466652749265" cy="132.50730098291336" r="20" onclick="clickedCircle('210D9')"></circle>
+        </svg>
+
+        <svg id="300D" width="620" height="400" style="pointer-events: all; display: none">
+            <rect cx="0" cy="0" width="620" height="400" class="back"></rect>
+            <circle id="300D1" class="circlePattern" cx="460" cy="200" r="20" onclick="clickedCircle('300D1')"></circle>
+            <circle id="300D2" class="circlePattern" cx="424.9066664678467" cy="296.4181414529809" r="20" onclick="clickedCircle('300D2')"></circle>
+            <circle id="300D3" class="circlePattern" cx="336.04722665003953" cy="347.72116295183116" r="20" onclick="clickedCircle('300D3')"></circle>
+            <circle id="300D4" class="circlePattern" cx="235.00000000000003" cy="329.9038105676658" r="20" onclick="clickedCircle('300D4')"></circle>
+            <circle id="300D5" class="circlePattern" cx="169.04610688211375" cy="251.30302149885034" r="20" onclick="clickedCircle('300D5')"></circle>
+            <circle id="300D6" class="circlePattern" cx="169.04610688211375" cy="148.69697850114972" r="20" onclick="clickedCircle('300D6')"></circle>
+            <circle id="300D7" class="circlePattern" cx="234.99999999999994" cy="70.09618943233426" r="20" onclick="clickedCircle('300D7')"></circle>
+            <circle id="300D8" class="circlePattern" cx="336.0472266500395" cy="52.27883704816878" r="20" onclick="clickedCircle('300D8')"></circle>
+            <circle id="300D9" class="circlePattern" cx="424.90666646784666" cy="103.58185854701907" r="20" onclick="clickedCircle('300D9')"></circle>
+        </svg>
+    </div>
+</div>
+
+</body>
+
+</html>
